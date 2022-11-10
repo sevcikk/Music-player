@@ -1,0 +1,283 @@
+*{
+    top: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Serif', serif;
+}
+
+body{
+    top: 0;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+svg{
+    fill: white;
+    height: 30px;
+    cursor: pointer;
+}
+
+.wrapped{
+    top: 0;
+    background-color: rgb(50, 46, 46);
+    width: 350px;
+    height: 80%;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-column: 1fr;
+    grid-template-rows: 7% 63% 10% 20%;
+    grid-auto-flow: row;
+}
+
+/*music-list*/
+.music-list{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.645);
+    z-index: 1;
+    padding-top: 60px;
+    display: none;
+    animation: listAnim 0.5s;
+}
+
+@keyframes listAnim{
+    0% {right: -450px}
+   100% {right: 0px}
+}
+
+.listBack{
+    animation: listBack 0.5s;
+}
+
+@keyframes listBack {
+    0% {right: 0px}
+   100% {right: -450px}
+}
+
+.music-list ul li{
+    list-style: none;
+    display: flex;
+    cursor: pointer;
+    margin: 5px 30px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+}
+
+.audio-duration{
+    margin-top: 10px;
+}
+
+.playing{
+    font-weight: bolder;
+    color: #47C25A;
+}
+
+/*overlay*/
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(35, 35, 35, 0.646);
+    z-index: 1;
+    display: none;
+    animation: overlayAnim 0.5s;
+}
+
+@keyframes overlayAnim{
+    0% {margin-top: -1000px}
+   100% {margin-top: 0px}
+}
+
+.overlayBack{
+    animation: overlayBack 0.5s;
+}
+
+@keyframes overlayBack {
+    0% {margin-top: 0px}
+   100% {margin-top: -1000px}
+}
+
+.overlay h1{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 45%;
+    font-size: 1.9em;
+    color: #47C25A;
+}
+
+.overlay h2{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+    color: rgb(222, 222, 222);
+}
+
+.overlay strong{
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+/*text*/
+h1{
+    font-weight: 400;
+    font-size: 1.6em;
+}
+
+h2{
+    font-weight: 300;
+    font-size: 1.3em;
+}
+
+h3{
+    color: rgb(230, 230, 230);
+    font-weight: 200;
+    font-size: 1em;
+}
+
+/*top bar*/
+.top-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-row: 1 / 2;
+    grid-column: 1;
+    align-items: flex-start;
+}
+
+.top-bar svg{
+    width: 25px;
+    height: 25px;
+}
+
+.arrow{
+    z-index: 2;
+}
+.bar{
+    z-index: 2;
+}
+
+/*image*/
+.image{
+    height: 100%;
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 2 / 3;
+    grid-column: 1;
+}
+
+.image img{
+    max-height: 100%;
+    overflow: hidden;
+}
+
+/*info*/
+.info{
+    grid-row: 3 / 4;
+    grid-column: 1;
+    margin-top: 10px;
+}
+
+.info > h1, .info > h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart{
+    position: absolute;
+    top: 75%;
+    left: 86%
+}
+.animateHeart{
+    animation:pulse 1s;
+    fill: #47C25A;
+}
+
+@keyframes pulse {
+    10% {transform: scale(1.1)}
+}
+
+/*progress bar*/
+.progress-area{
+    height: 3px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    grid-row: 4 / 5;
+    grid-column: 1;
+    margin-top: 35px;
+}
+
+.progress-area .progress-bar{
+    width: 0%;
+    height: 3px;
+    position: relative;
+    background: #47C25A;
+}
+
+.progress-bar::before{
+    content: "";
+    right: 0;
+    height: 13px;
+    width: 13px;
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    transform: translateY(-50%);
+}
+
+/*time*/
+.time-area{
+    grid-row: 4 / 5;
+    grid-column: 1;
+    margin-top: 45px;
+}
+.end-time{
+    float: right;
+}
+
+.time{
+    float: left;
+}
+
+/*controls*/
+.controls{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-row: 4 / 5;
+    grid-column: 1;
+    margin-top: 80px;
+}
+
+.controls .pause{
+    display: none;
+}
+
+.controls .play, .controls .pause{
+    height: 45px;
+}
+
+.next:active, .back:active, .shuffle:active, .repeat:active{
+    scale: 0.9;
+    fill: rgb(207, 207, 207);
+}
+
+.play:active, .pause:active{
+    scale: 0.98;
+}
